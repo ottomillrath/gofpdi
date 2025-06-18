@@ -86,8 +86,8 @@ func (this *Importer) SetSourceFile(f string) {
 	}
 }
 
-func (this *Importer) SetSourceStream(rs *io.ReadSeeker) {
-	this.sourceFile = fmt.Sprintf("%v", rs)
+func (this *Importer) SetSourceStream(fileName string, rs *io.ReadSeeker) {
+	this.sourceFile = fileName
 
 	if _, ok := this.readers[this.sourceFile]; !ok {
 		reader, err := NewPdfReaderFromStream(this.sourceFile, *rs)
